@@ -1,0 +1,11 @@
+build/
+devel/
+logs/
+output/
+dist/
+*.pth
+weights/*.weights
+__pycache__
+*.png
+checkpoints/
+*.pyc
