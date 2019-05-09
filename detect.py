@@ -24,7 +24,7 @@ from matplotlib.ticker import NullLocator
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--image_folder", type=str, default="data/samples", help="path to dataset")
-    parser.add_argument("--config_path", type=str, default="config/yolov3.cfg", help="path to model config file")
+    parser.add_argument("--config_path", type=str, default="config/yolov3-tiny.cfg", help="path to model config file")
     parser.add_argument("--weights_path", type=str, default="weights/yolov3.weights", help="path to weights file")
     parser.add_argument("--class_path", type=str, default="data/subt.names", help="path to class label file")
     parser.add_argument("--conf_thres", type=float, default=0.8, help="object confidence threshold")
@@ -109,6 +109,7 @@ if __name__ == "__main__":
         # Draw bounding boxes and labels of detections
         if detections is not None:
             # Rescale boxes to original image
+            # print(img.shape[:2])
             detections = rescale_boxes(detections, opt.img_size, img.shape[:2])
             unique_labels = detections[:, -1].cpu().unique()
             n_cls_preds = len(unique_labels)

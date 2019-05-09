@@ -88,9 +88,12 @@ class ListDataset(Dataset):
         img = cv2.imread(self._imgpath % img_id)
 
         # Handles images with less than three channels
-        if len(img.shape) != 3:
-            img = np.expand_dims(img, -1)
-            img = np.repeat(img, 3, -1)
+        try:
+            if len(img.shape) != 3:
+                img = np.expand_dims(img, -1)
+                img = np.repeat(img, 3, -1)
+        except:
+            print("=========================", self._imgpath % img_id)
 
         h, w, _ = img.shape
         img, pad = pad_to_square(img, 127.5)

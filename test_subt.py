@@ -23,7 +23,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--batch_size", type=int, default=8, help="size of each image batch")
     parser.add_argument(
-        "--model_config_path", type=str, default="config/yolov3.cfg", help="path to model config file"
+        "--model_config_path", type=str, default="config/yolov3-tiny.cfg", help="path to model config file"
     )
     parser.add_argument("--data_config_path", type=str, default="config/subt.data", help="path to data config file")
     parser.add_argument("--weights_path", type=str, default="weights/yolov3.weights", help="path to weights file")
