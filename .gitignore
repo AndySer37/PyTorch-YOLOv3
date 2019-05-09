@@ -5,6 +5,5 @@ dist/
 *.pth
 weights/*.weights
 __pycache__
-*.png
 checkpoints/
 *.pyc
