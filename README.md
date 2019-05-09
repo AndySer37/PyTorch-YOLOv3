@@ -55,7 +55,7 @@ Uses pretrained weights to make predictions on images. Below table displays the 
 <p align="center"><img src="output/1.png" width="480"\></p>
 <p align="center"><img src="output/2.png" width="480"\></p>
 <p align="center"><img src="output/4.png" width="480"\></p>
-<p align="center"><img src="output/9.png" width="480"\></p>
+<p align="center"><img src="output/5.png" width="480"\></p>
 
 ## Test
 Evaluates the model on COCO test.
