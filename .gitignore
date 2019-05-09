@@ -1,7 +1,6 @@
 build/
 devel/
 logs/
-output/
 dist/
 *.pth
 weights/*.weights
