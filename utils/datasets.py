@@ -17,7 +17,7 @@ else:
     import xml.etree.ElementTree as ET
 
 subt_CLASSES =  [  # always index 0
-    'bb_extinguisher', 'bb_drill', 'bb_backpack']
+    'bb_extinguisher', 'bb_drill', 'bb_backpack', 'bb_phone', 'bb_man']
 
 def pad_to_square(img, pad_value):
     h, w, _ = img.shape
@@ -63,8 +63,8 @@ class ImageFolder(Dataset):
 
 
 class ListDataset(Dataset):
-    def __init__(self, list_path, image_sets=[('train')], img_size=416, training=True, augment=True):
-        rootpath = "/home/andyser/data/subt_real"
+    def __init__(self, list_path, image_sets=[('trainval')], img_size=416, training=True, augment=True):
+        rootpath = "/home/andyser/data/subt_5_artifact"
         self.class_to_ind = dict(zip(subt_CLASSES, range(len(subt_CLASSES))))
         self.img_size = img_size
         self.max_objects = 100
@@ -85,7 +85,10 @@ class ListDataset(Dataset):
         img_id = self.ids[index]
         target = ET.parse(self._annopath % img_id).getroot()
         
-        img = cv2.imread(self._imgpath % img_id)
+        str_ = self._imgpath % img_id
+        str_ = str_[:40] + str_[40:].replace('_', '/')
+        # img = cv2.imread(self._imgpath % img_id)
+        img = cv2.imread(str_)
 
         # Handles images with less than three channels
         try:

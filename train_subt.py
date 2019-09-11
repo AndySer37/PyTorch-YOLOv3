@@ -24,9 +24,9 @@ import torch.optim as optim
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--epochs", type=int, default=100, help="number of epochs")
-    parser.add_argument("--batch_size", type=int, default=5, help="size of each image batch")
+    parser.add_argument("--batch_size", type=int, default=6, help="size of each image batch")
     parser.add_argument("--gradient_accumulations", type=int, default=2, help="number of gradient accums before step")
-    parser.add_argument("--model_config_path", type=str, default="config/yolov3-tiny.cfg", help="path to model config")
+    parser.add_argument("--model_config_path", type=str, default="config/yolov3_subt.cfg", help="path to model config")
     parser.add_argument("--data_config_path", type=str, default="config/subt.data", help="path to data config file")
     parser.add_argument("--checkpoint_model", type=str, help="if specified starts from checkpoint model")
     parser.add_argument("--class_path", type=str, default="data/subt.names", help="path to class label file")

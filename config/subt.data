@@ -1,6 +1,6 @@
-classes= 3
-train=/home/andyser/data/subt_real/ImageSets/Main/train.txt
-valid=/home/andyser/data/subt_real/ImageSets/Main/text.txt
+classes= 5
+train=/home/andyser/data/subt_5_artifact/ImageSets/Main/trainval.txt
+valid=/home/andyser/data/subt_5_artifact/ImageSets/Main/test.txt
 names=data/subt.names
 backup=backup/
 eval=subt
