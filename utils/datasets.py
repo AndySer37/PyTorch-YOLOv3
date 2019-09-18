@@ -64,7 +64,7 @@ class ImageFolder(Dataset):
 
 
 class ListDataset(Dataset):
-    def __init__(self, list_path, image_sets=[('train')], img_size=416, training=False, augment=True):
+    def __init__(self, list_path, image_sets=[('train')], img_size=416, training=True, augment=True):
         rootpath = "/home/andyser/data/mm_barcode"
         self.class_to_ind = dict(zip(barcode_CLASSES, range(len(barcode_CLASSES))))
         self.img_size = img_size
