@@ -16,8 +16,9 @@ if sys.version_info[0] == 2:
 else:
     import xml.etree.ElementTree as ET
 
-subt_CLASSES =  [  # always index 0
-    'bb_extinguisher', 'bb_drill', 'bb_backpack', 'bb_phone', 'bb_man']
+# subt_CLASSES =  [  # always index 0
+#     'bb_extinguisher', 'bb_drill', 'bb_backpack', 'bb_phone', 'bb_man']
+barcode_CLASSES =  ['barcode']
 
 def pad_to_square(img, pad_value):
     h, w, _ = img.shape
@@ -63,15 +64,15 @@ class ImageFolder(Dataset):
 
 
 class ListDataset(Dataset):
-    def __init__(self, list_path, image_sets=[('trainval')], img_size=416, training=True, augment=True):
-        rootpath = "/home/andyser/data/subt_5_artifact"
-        self.class_to_ind = dict(zip(subt_CLASSES, range(len(subt_CLASSES))))
+    def __init__(self, list_path, image_sets=[('train')], img_size=416, training=False, augment=True):
+        rootpath = "/home/andyser/data/mm_barcode"
+        self.class_to_ind = dict(zip(barcode_CLASSES, range(len(barcode_CLASSES))))
         self.img_size = img_size
         self.max_objects = 100
         self.is_training = training
         self.augment = augment and training
         self._annopath = osp.join('%s', 'Annotations', '%s.xml')
-        self._imgpath = osp.join('%s', 'image', '%s.jpg')
+        self._imgpath = osp.join('%s', 'Images', '%s.jpg')
         self.ids = list()
         for name in image_sets:
             for line in open(osp.join(rootpath, 'ImageSets/Main', name + '.txt')):
@@ -87,8 +88,8 @@ class ListDataset(Dataset):
         
         str_ = self._imgpath % img_id
         str_ = str_[:40] + str_[40:].replace('_', '/')
-        # img = cv2.imread(self._imgpath % img_id)
-        img = cv2.imread(str_)
+        img = cv2.imread(self._imgpath % img_id)
+        # img = cv2.imread(str_)
 
         # Handles images with less than three channels
         try:
@@ -97,7 +98,6 @@ class ListDataset(Dataset):
                 img = np.repeat(img, 3, -1)
         except:
             print("=========================", self._imgpath % img_id)
-
         h, w, _ = img.shape
         img, pad = pad_to_square(img, 127.5)
         padded_h, padded_w, _ = img.shape

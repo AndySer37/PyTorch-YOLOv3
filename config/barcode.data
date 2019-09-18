@@ -1,0 +1,6 @@
+classes= 1
+train=/home/andyser/data/mm_barcode/ImageSets/Main/train.txt
+valid=/home/andyser/data/mm_barcode/ImageSets/Main/test.txt
+names=data/barcode.names
+backup=backup/
+eval=subt
